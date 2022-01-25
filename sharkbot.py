@@ -1,13 +1,19 @@
+
 from selenium import webdriver as wd
 import chromedriver_binary
 import chromedriver_autoinstaller
 from selenium.webdriver import common
 from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException, ElementNotInteractableException
 import time
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 from twilio.rest import Client
-account_sid = 'AC4e343d25d921b501b84f3b6dfefde6e6'
-auth_token = 'c7c9b9cb1fba5a9efe99dcc90874d89f'
+account_sid = os.getenv("twilio_SID")
+auth_token = os.getenv("twilio_auth")
 client = Client(account_sid, auth_token)
 cell_phone_number = '+16236935874'
 
@@ -33,8 +39,7 @@ def send_message():
     message = client.messages.create(
                               messaging_service_sid='MG44bb1a6fae175a415fed124e96ea1d2c',
                               body=text,
-                              to=cell_phone_number
-                          )
+                              to=cell_phone_number)
     print(message.sid)
 
 def in_stock_check():
