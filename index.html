@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" name="viewport" content="with=device-width, inital-scale=1.0">
+    <title>SharkHunter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300;400&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+  </head>
+  <body>
+    <section class="header">
+      <script type="text/python" src="sharkbot.py"></script>
+      <nav>
+        <a href="index.html"><img src="images/blue-shark-logo.png"></a>
+        <div class="nav-links">
+            <ul>
+              <li><a href="">Home</a></li>
+              <li><a href="">About</a></li>
+              <li><a href="">Items Tracked</a></li>
+            </ul>
+        </div>
+      </nav>
+      <div class="text-box">
+        <h1>SharkHunter</h1>
+        <p>Welcome to SharkHunter! Utilize our SharkBots <br>to track Gymshark item availability.</p>
+        <br>
+        <script type="text/javascript">
+          // function show_info(form){
+            //  alert("You selected: " + user_size + " Your password is: " + user_pin + " Your phone number is: " + user_phone_number + " Your url is: " + user_url);
+          }
+        </script>
+        <form class="" action="index.html" method="get">
+          <input type="button" class="hero-btn" value="Start SharkBot" onclick="show_info(this.form)">
+        </form>
+      </div>
+    </section>
+
+<section class="add-item">
+<script type="text/javascript">
+  let user_size
+  let user_phone_number
+  let user_url
+  let user_pin
+  function get_info(form){
+    user_pin = parseInt(form.pin.value);
+      if (user_pin !== 1363) {
+        alert("Not the correct password. You put in: " + user_pin);
+        return;
+        }
+      else if (user_pin === 1363) {
+        for (k = 0; k < 4; k++) {
+            if (form.size_select[k].checked)
+                break;
+        }
+        user_size = form.size_select[k].value
+        user_phone_number = form.phone_number_input.value
+        user_url = form.item_url_input.value
+        form.item_url_input.value = "";
+      }
+    }
+  function show_info(form){
+      alert("You selected: " + user_size + " Your password is: " + user_pin + " Your phone number is: " + user_phone_number + " Your url is: " + user_url);
+        }
+</script>
+    <div class="item-area-header">
+      <h1>Add a new item to tracking list</h1>
+    </div>
+  <div class="add-item-area">
+    <form class="" action="index.html" method="get">
+      <input type="text" id= "phone_number_input" name="phone_number_input" placeholder="Type in phone number (i.e. +15551234567)" size="100">
+      <br>
+      <input type="text" id="item_url_input" name="item_url_input" placeholder="Type in url" size="100">
+      <br>
+      <input type="password" id="pin" name="pin" placeholder="Type in pin" maxlength="6">
+      <br>
+        <input type="radio" id="extra small" name="size_select" value="Extra Small" onclick=0>
+        <label for="extra small">Extra Small</label><br>
+        <input type="radio" id="small" name="size_select" value="Small" onclick=0>
+        <label for="small">Small</label><br>
+        <input type="radio" id="medium" name="size_select" value="Medium" onclick=0>
+        <label for="medium">Medium</label><br>
+        <input type="radio" id="large" name="size_select" value="Large" onclick=0>
+        <label for="large">Large</label><br>
+      <input type="button" class="hero-btn" name="submit_button" value="Submit" onclick="get_info(this.form)">
+    </form>
+  </div>
+</section>
+
+
+<!--
+<section class="items-tracked">
+  <h1>Items currently tracked:</h1>
+  <ol>
+    <li>Thing 1</li>
+    <li>Thing 2</li>
+    <li>Thing 3</li>
+  </ol>
+</section>
+-->
+
+  </body>
+</html>
+
+<!--
+if (user_pin !== 1363)
+  return
+else if (user_pin === 1363) {-->
+
+<!--Not mobile friendly-->
