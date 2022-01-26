@@ -9,7 +9,6 @@ import os
 import sys
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 from twilio.rest import Client
@@ -24,10 +23,11 @@ chromedriver_autoinstaller.install()
 wd = wd.Chrome()
 wd.implicitly_wait(5)
 
-item_site = ((str(sys.argv[1]))[0:-1])
-size = str(sys.argv[0][0])
+item_site = str(sys.argv[2])
+size = str(sys.argv[1])
 cycle = 0
 text = str()
+
 wd.get(item_site)
 
 try:
