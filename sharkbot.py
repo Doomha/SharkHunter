@@ -6,6 +6,7 @@ from selenium.webdriver import common
 from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException, ElementNotInteractableException
 import time
 import os
+import sys
 from dotenv import load_dotenv
 
 
@@ -15,7 +16,7 @@ from twilio.rest import Client
 account_sid = os.getenv("twilio_SID")
 auth_token = os.getenv("twilio_auth")
 client = Client(account_sid, auth_token)
-cell_phone_number = '+16236935874'
+cell_phone_number = os.getenv("phone_number")
 
 
 chromedriver_autoinstaller.install()
@@ -23,8 +24,8 @@ chromedriver_autoinstaller.install()
 wd = wd.Chrome()
 wd.implicitly_wait(5)
 
-item_site = "https://www.gymshark.com/products/gymshark-apex-seamless-sports-bra-light-blue"
-size = "m"
+item_site = ((str(sys.argv[1]))[0:-1])
+size = str(sys.argv[0][0])
 cycle = 0
 text = str()
 wd.get(item_site)

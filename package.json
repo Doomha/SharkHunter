@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "nodejs": "^0.0.0",
+    "python-shell": "^3.0.1"
+  }
+}
