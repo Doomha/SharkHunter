@@ -8,10 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300;400&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <script src="bundle.js"></script>
   </head>
   <body>
     <section class="header">
-      <script type="text/python" src="sharkbot.py"></script>
       <nav>
         <a href="index.html"><img src="images/blue-shark-logo.png"></a>
         <div class="nav-links">
@@ -26,43 +26,58 @@
         <h1>SharkHunter</h1>
         <p>Welcome to SharkHunter! Utilize our SharkBots <br>to track Gymshark item availability.</p>
         <br>
-        <script type="text/javascript">
-          // function show_info(form){
-            //  alert("You selected: " + user_size + " Your password is: " + user_pin + " Your phone number is: " + user_phone_number + " Your url is: " + user_url);
-          }
-        </script>
         <form class="" action="index.html" method="get">
           <input type="button" class="hero-btn" value="Start SharkBot" onclick="show_info(this.form)">
+          <script src="python_run.js"></script>
+          <input type="button" class="hero-btn" value="Start SharkBot 2" onclick="pin_call()">
         </form>
       </div>
     </section>
 
 <section class="add-item">
 <script type="text/javascript">
-  let user_size
-  let user_phone_number
-  let user_url
-  let user_pin
+  let inputs_validated = false
+
+  function check_inputs(form){
+    if (user_size === undefined) {
+      alert("You haven't picked a size yet.");
+      return }
+    if (user_phone_number === undefined) {
+      alert("You haven't typed in your phone number yet.");
+      return }
+    if ((user_url === undefined) || (user_url === "")) {
+      alert("You haven't typed in a GymShark url yet.");
+      return }
+    inputs_validated = true;
+    }
+
   function get_info(form){
-    user_pin = parseInt(form.pin.value);
+      user_pin = parseInt(form.pin.value);
       if (user_pin !== 1363) {
         alert("Not the correct password. You put in: " + user_pin);
-        return;
-        }
+        return }
       else if (user_pin === 1363) {
         for (k = 0; k < 4; k++) {
             if (form.size_select[k].checked)
-                break;
-        }
-        user_size = form.size_select[k].value
-        user_phone_number = form.phone_number_input.value
-        user_url = form.item_url_input.value
-        form.item_url_input.value = "";
+                break }
+      user_size = form.size_select[k].value
+      user_phone_number = form.phone_number_input.value
+      user_url = form.item_url_input.value
+      form.item_url_input.value = ""
+      check_inputs(form);
       }
     }
+
   function show_info(form){
+    if (inputs_validated === true) {
       alert("You selected: " + user_size + " Your password is: " + user_pin + " Your phone number is: " + user_phone_number + " Your url is: " + user_url);
-        }
+      }
+    else {
+      alert("You are missing some information.")
+          }
+    inputs_validated = false;
+    }
+
 </script>
     <div class="item-area-header">
       <h1>Add a new item to tracking list</h1>
@@ -87,25 +102,7 @@
     </form>
   </div>
 </section>
-
-
-<!--
-<section class="items-tracked">
-  <h1>Items currently tracked:</h1>
-  <ol>
-    <li>Thing 1</li>
-    <li>Thing 2</li>
-    <li>Thing 3</li>
-  </ol>
-</section>
--->
-
-  </body>
+</body>
 </html>
-
-<!--
-if (user_pin !== 1363)
-  return
-else if (user_pin === 1363) {-->
 
 <!--Not mobile friendly-->
