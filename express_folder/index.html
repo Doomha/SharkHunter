@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8" name="viewport" content="with=device-width, inital-scale=1.0">
+    <meta charset="utf-8">
     <title>SharkHunter</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300;400&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
-    <script src="bundle.js"></script>
+    <script src="python_run.js"></script>
   </head>
   <body>
     <section class="header">
@@ -27,16 +27,15 @@
         <p>Welcome to SharkHunter! Utilize our SharkBots <br>to track Gymshark item availability.</p>
         <br>
         <form class="" action="index.html" method="get">
-          <input type="button" class="hero-btn" value="Start SharkBot" onclick="show_info(this.form)">
-          <script src="python_run.js"></script>
-          <input type="button" class="hero-btn" value="Start SharkBot 2" onclick="pin_call()">
+        <input type="button" class="hero-btn" value="Start SharkBot" onclick="show_info(this.form)">
+        <input type="button" class="hero-btn" value="Testing" onclick="set_done_status()">
         </form>
       </div>
     </section>
 
 <section class="add-item">
 <script type="text/javascript">
-  let inputs_validated = false
+  let inputs_validated = false;
 
   function check_inputs(form){
     if (user_size === undefined) {
@@ -70,13 +69,14 @@
 
   function show_info(form){
     if (inputs_validated === true) {
-      alert("You selected: " + user_size + " Your password is: " + user_pin + " Your phone number is: " + user_phone_number + " Your url is: " + user_url);
+      alert("You selected: " + user_size + "\nYour password is: " + user_pin + "\nYour phone number is: " + user_phone_number + "\nYour url is: " + user_url);
       }
     else {
       alert("You are missing some information.")
           }
     inputs_validated = false;
     }
+
 
 </script>
     <div class="item-area-header">

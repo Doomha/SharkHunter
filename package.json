@@ -1,7 +1,14 @@
 {
+  "name": "SharkHunter",
+  "version": "1.0.0",
+  "description": "SharkHunter runs SharkBots",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
-    "browserify": "^17.0.0",
     "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "node": "^17.4.0",
     "nodejs": "^0.0.0",
     "python-shell": "^3.0.1"
   }
