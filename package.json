@@ -4,6 +4,7 @@
   "description": "SharkHunter runs SharkBots",
   "scripts": {
     "start": "node server.js"
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "dotenv": "^14.3.2",
@@ -11,5 +12,8 @@
     "node": "^17.4.0",
     "nodejs": "^0.0.0",
     "python-shell": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

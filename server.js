@@ -47,3 +47,4 @@ const work_check = () => {
 }
 
 work_check();
+done_status = true;
