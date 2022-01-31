@@ -10,7 +10,7 @@ const db = mysql.createConnection({
   multipleStatements: true,
   host: 'localhost',
   user: 'root',
-  password: 'madmuSik247',
+  password: process.env.MYSQL_PASS,
   database: 'nodemysql'
 })
 
