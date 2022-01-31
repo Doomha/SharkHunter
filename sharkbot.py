@@ -15,7 +15,6 @@ from twilio.rest import Client
 account_sid = os.getenv("twilio_SID")
 auth_token = os.getenv("twilio_auth")
 client = Client(account_sid, auth_token)
-cell_phone_number = os.getenv("phone_number")
 
 
 chromedriver_autoinstaller.install()
@@ -23,8 +22,9 @@ chromedriver_autoinstaller.install()
 wd = wd.Chrome()
 wd.implicitly_wait(5)
 
-item_site = str(sys.argv[2])
 size = str(sys.argv[1])
+item_site = str(sys.argv[2])
+cell_phone_number = str(sys.argv[3])
 cycle = 0
 text = str()
 

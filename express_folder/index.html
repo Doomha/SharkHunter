@@ -26,14 +26,11 @@
         <h1>SharkHunter</h1>
         <p>Welcome to SharkHunter! Utilize our SharkBots <br>to track Gymshark item availability.</p>
         <br>
-        <form class="" action="index.html" method="get">
-        <input type="button" class="hero-btn" value="Start SharkBot" onclick="show_info(this.form)">
-        <input type="button" class="hero-btn" value="Testing" onclick="show_info(this.form)">
-        </form>
+        <input type="button" class="hero-btn" value="Get Started" onclick=window.location.href="#add-item-area">
       </div>
     </section>
 
-<section class="add-item">
+<section id="add-item-area" class="add-item">
 <script type="text/javascript">
   let inputs_validated = false;
 
@@ -64,7 +61,7 @@
       user_phone_number = form.phone_number_input.value;
       user_url = form.item_url_input.value;
       check_inputs(form);
-      }
+      return }
     }
 
   function show_info(form){
@@ -80,10 +77,10 @@
 
 </script>
     <div class="item-area-header">
-      <h1>Add a new item to tracking list</h1>
+      <h1>Enter information below</h1>
     </div>
   <div class="add-item-area">
-    <form class="" action="/item" method="post">
+    <form class="" action="/madeitem.html" method="post">
       <input type="text" id= "phone_number_input" name="phone_number_input" placeholder="Type in phone number (i.e. +15551234567)" size="100">
       <br>
       <input type="text" id="item_url_input" name="item_url_input" placeholder="Type in url" size="100">
