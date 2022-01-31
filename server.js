@@ -7,6 +7,7 @@ const {PythonShell} = require ("python-shell");
 require("dotenv").config();
 
 const db = mysql.createConnection({
+  multipleStatements: true,
   host: 'localhost',
   user: 'root',
   password: 'madmuSik247',
@@ -20,7 +21,6 @@ db.connect(err => { // Connecting to MySQL
   console.log("MySQL connected")
 })
 
-
 const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,33 +31,18 @@ app.use('/', function(req,res){
   });
 
 const server = http.createServer(app);
+const port = 3000;
+server.listen(port);
+console.debug('Server listening on port ' + port);
 
-// app.get('/createdb', (req, res) => { // Creating database "nodemysql"
-//   let sql = 'CREATE DATABASE nodemysql'
-//   db.query(sql, err => {
-//     if(err) {
-//       throw err
-//     }
-//     res.send('Success 1');
-//   })
-// })
-//
-// app.get('/createitem', (req, res) => { // Creating table "item"
-//   let sql = 'CREATE TABLE item(id int AUTO_INCREMENT, phone_number VARCHAR(255), item_url VARCHAR(255), user_pin VARCHAR(255), item_size VARCHAR(255),  PRIMARY KEY(id))'
-//   db.query(sql, err => {
-//     if(err) {
-//       throw err
-//     }
-//     res.send('Success 2');
-//   })
-// })
 
-app.post('/madeitem.html', async (req, res) => { // Creating an item
+app.post('/madeitem.html', async (req, res, cb) => { // Creating an item
   if (req.body.pin != process.env.MASTER_PIN) {
-    return;
+    res.sendFile(path.join(__dirname+'/express_folder/index.html'));
+    // return cb("");
 } else if (req.body.pin == process.env.MASTER_PIN) {
     let post = {phone_number: req.body.phone_number_input, item_url: req.body.item_url_input, user_pin: req.body.pin, item_size: req.body.size_select, following: 'yes'}
-    let sql = 'INSERT INTO nodemysql.item SET ?'
+    let sql = 'TRUNCATE TABLE nodemysql.item; INSERT INTO nodemysql.item SET ?'
     let query = await db.query(sql, post, err => {
       if(err) {
         throw err;
@@ -68,7 +53,7 @@ app.post('/madeitem.html', async (req, res) => { // Creating an item
 })
 
 app.post('/sharkbot.html', (req, res) => { // Creating an item
-    let sql = 'SELECT * FROM nodemysql.item WHERE id = 74';
+    let sql = 'SELECT * FROM nodemysql.item WHERE id = 1';
     let query = db.query(sql, (err, results) => {
       if(err) {
         throw err;
@@ -89,11 +74,9 @@ app.post('/sharkbot.html', (req, res) => { // Creating an item
         if (err) throw err;
         console.log("finished");
       });
-
       res.sendFile(path.join(__dirname+'/express_folder/sharkbot.html'));
     })
 })
-
 
 app.get('/getitem', async (req, res) => {
   let sql = 'SELECT * FROM nodemysql.item'
@@ -105,12 +88,6 @@ app.get('/getitem', async (req, res) => {
     return;
   })
 })
-
-
-
-const port = 3000;
-server.listen(port);
-console.debug('Server listening on port ' + port);
 
 function find_size_code (user_size, err) {
   if (err) {
@@ -124,32 +101,3 @@ function find_size_code (user_size, err) {
   } else if (user_size === "Extra Small") {
     return "xs";
   }};
-
-// function find_pin() {
-//   let master_pin = process.env.MASTER_PIN;
-//   console.log(master_pin);
-// }
-// find_pin();
-
-// let done_status = false;
-// const done_yet_check = new Promise((resolve, reject) => {
-//   if (done_status){
-//     const done_yet = "All finished."
-//     resolve(done_yet)
-//   } else {
-//     const not_done_yet = "Still working on that."
-//     reject(not_done_yet)
-//   }
-// })
-//
-// const work_check = () => {
-//   done_yet_check
-//     .then(ok => {
-//       console.log(ok)
-//     })
-//     .catch(err => {
-//       console.error(err)
-//     })
-// }
-//
-// work_check();

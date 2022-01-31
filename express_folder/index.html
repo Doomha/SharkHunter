@@ -34,7 +34,7 @@
 <script type="text/javascript">
   let inputs_validated = false;
 
-  function check_inputs(form){
+  function check_inputs(form) {
     if (user_size === undefined) {
       alert("You haven't picked a size yet.");
       return }
@@ -47,16 +47,11 @@
     inputs_validated = true;
     }
 
-   function get_info(form){
+   function get_info(form) {
       user_pin = parseInt(form.pin.value);
-      if (user_pin !== 1363) {
-        alert("Not the correct password. You put in: " + user_pin);
-        form.pin.value = "";
-        return }
-      else if (user_pin === 1363) {
-        for (k = 0; k < 4; k++) {
-            if (form.size_select[k].checked)
-                break }
+      for (k = 0; k < 4; k++) {
+          if (form.size_select[k].checked)
+              break }
       user_size = form.size_select[k].value;
       user_phone_number = form.phone_number_input.value;
       user_url = form.item_url_input.value;
@@ -64,7 +59,7 @@
       return }
     }
 
-  function show_info(form){
+  function show_info(form) {
     if (inputs_validated === true) {
       alert("You selected: " + user_size + "\nYour password is: " + user_pin + "\nYour phone number is: " + user_phone_number + "\nYour url is: " + user_url);
       }
@@ -74,13 +69,17 @@
     inputs_validated = false;
     }
 
+  function info_master(form) {
+    get_info(form);
+    show_info(form)
+}
 
 </script>
     <div class="item-area-header">
       <h1>Enter information below</h1>
     </div>
   <div class="add-item-area">
-    <form class="" action="/madeitem.html" method="post">
+    <form class="" onsubmit="" action="/madeitem.html" method="post">
       <input type="text" id= "phone_number_input" name="phone_number_input" placeholder="Type in phone number (i.e. +15551234567)" size="100">
       <br>
       <input type="text" id="item_url_input" name="item_url_input" placeholder="Type in url" size="100">
@@ -95,7 +94,7 @@
         <label for="medium">Medium</label><br>
         <input type="radio" id="large" name="size_select" value="Large" onclick=0>
         <label for="large">Large</label><br>
-      <input type="submit" class="hero-btn" name="submit_button" value="Submit" onclick="get_info(this.form)">
+      <input type="submit" class="hero-btn" name="submit_button" value="Submit" onclick="info_master(this.form)">
     </form>
   </div>
 </section>
