@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>SharkHunter</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300;400&display=swap">
@@ -28,7 +28,7 @@
         <br>
         <form class="" action="index.html" method="get">
         <input type="button" class="hero-btn" value="Start SharkBot" onclick="show_info(this.form)">
-        <input type="button" class="hero-btn" value="Testing Mareena" onclick="show_info(this.form)">
+        <input type="button" class="hero-btn" value="Testing" onclick="show_info(this.form)">
         </form>
       </div>
     </section>
@@ -50,19 +50,19 @@
     inputs_validated = true;
     }
 
-  function get_info(form){
+   function get_info(form){
       user_pin = parseInt(form.pin.value);
       if (user_pin !== 1363) {
         alert("Not the correct password. You put in: " + user_pin);
+        form.pin.value = "";
         return }
       else if (user_pin === 1363) {
         for (k = 0; k < 4; k++) {
             if (form.size_select[k].checked)
                 break }
-      user_size = form.size_select[k].value
-      user_phone_number = form.phone_number_input.value
-      user_url = form.item_url_input.value
-      form.item_url_input.value = ""
+      user_size = form.size_select[k].value;
+      user_phone_number = form.phone_number_input.value;
+      user_url = form.item_url_input.value;
       check_inputs(form);
       }
     }
@@ -83,7 +83,7 @@
       <h1>Add a new item to tracking list</h1>
     </div>
   <div class="add-item-area">
-    <form class="" action="index.html" method="get">
+    <form class="" action="/item" method="post">
       <input type="text" id= "phone_number_input" name="phone_number_input" placeholder="Type in phone number (i.e. +15551234567)" size="100">
       <br>
       <input type="text" id="item_url_input" name="item_url_input" placeholder="Type in url" size="100">
@@ -98,7 +98,7 @@
         <label for="medium">Medium</label><br>
         <input type="radio" id="large" name="size_select" value="Large" onclick=0>
         <label for="large">Large</label><br>
-      <input type="button" class="hero-btn" name="submit_button" value="Submit" onclick="get_info(this.form)">
+      <input type="submit" class="hero-btn" name="submit_button" value="Submit" onclick="get_info(this.form)">
     </form>
   </div>
 </section>
