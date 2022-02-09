@@ -25,6 +25,9 @@ wd.implicitly_wait(5)
 size = str(sys.argv[1])
 item_site = str(sys.argv[2])
 cell_phone_number = str(sys.argv[3])
+user_email = os.getenv("USER_EMAIL")
+user_password = os.getenv("USER_PASSWORD")
+
 cycle = 0
 text = str()
 
@@ -100,14 +103,14 @@ time.sleep(2)
 input_email_address = wd.find_element_by_xpath('/html/body/div[2]/div[2]/main/div[2]/section/div/div/div/div[1]/form/div[1]/input')
 input_email_address.click()
 type(input_email_address)
-input_email_address.send_keys("mareenahart@gmail.com")
+input_email_address.send_keys(user_email)
 
 time.sleep(2)
 
 input_password = wd.find_element_by_xpath('/html/body/div[2]/div[2]/main/div[2]/section/div/div/div/div[1]/form/div[2]/div/input')
 input_password.click()
 type(input_password)
-input_password.send_keys("Earlyjuly98")
+input_password.send_keys(user_password)
 
 time.sleep(2)
 

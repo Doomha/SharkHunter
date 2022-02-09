@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const {PythonShell} = require ("python-shell");
 require("dotenv").config();
 
-const db = mysql.createConnection({
+const db = mysql.createConnection({ // Creating MySQL connection
   multipleStatements: true,
   host: 'localhost',
   user: 'root',
@@ -39,7 +39,6 @@ console.debug('Server listening on port ' + port);
 app.post('/madeitem.html', async (req, res, cb) => { // Creating an item
   if (req.body.pin != process.env.MASTER_PIN) {
     res.sendFile(path.join(__dirname+'/express_folder/index.html'));
-    // return cb("");
 } else if (req.body.pin == process.env.MASTER_PIN) {
     let post = {phone_number: req.body.phone_number_input, item_url: req.body.item_url_input, user_pin: req.body.pin, item_size: req.body.size_select, following: 'yes'}
     let sql = 'TRUNCATE TABLE nodemysql.item; INSERT INTO nodemysql.item SET ?'
@@ -76,17 +75,6 @@ app.post('/sharkbot.html', (req, res) => { // Creating an item
       });
       res.sendFile(path.join(__dirname+'/express_folder/sharkbot.html'));
     })
-})
-
-app.get('/getitem', async (req, res) => {
-  let sql = 'SELECT * FROM nodemysql.item'
-  let query = await db.query(sql, (err, results) => {
-    if(err) {
-      throw err;
-    }
-    res.send(results);
-    return;
-  })
 })
 
 function find_size_code (user_size, err) {
