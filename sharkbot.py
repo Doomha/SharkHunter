@@ -35,7 +35,7 @@ text = str()
 wd.get(item_site)
 
 try:
-    current_price = wd.find_element(By.XPATH, '//*[@id="portal-product"]/div/div/section[2]/section[1]/div/div/span').text
+    current_price = wd.find_element(By.XPATH, '//*[@id="portal-product"]/div/div/section[2]/section[1]/div[2]/div/span').text
 except NoSuchElementException:
     current_price = wd.find_element(By.XPATH, '//*[@id="portal-product"]/div/div/section[2]/section[1]/div[2]/div/span[1]').text
 
@@ -54,8 +54,7 @@ def in_stock_check():
     global text
     global send_message
     item_name = wd.find_element(By.XPATH, '//*[@id="portal-product"]/div/div/section[2]/section[1]/div/h1').text
-    item_color = wd.find_element(By.XPATH, '    //*[@id="portal-product"]/div/div/section[2]/div[2]/h4/span').text
-
+    item_color = wd.find_element(By.XPATH, '//*[@id="portal-product"]/div/div/section[2]/div[1]/h4/span').text
     def cookie_check():
         try:
             cookie_banner_close_button = wd.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div[2]/button')
